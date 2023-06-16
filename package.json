@@ -1,0 +1,39 @@
+{
+  "name": "nuxt-fullstack",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "production": "nuxt build && nuxt start",
+    "lint:prettier": "prettier --check .",
+    "lint": "npm run lint:prettier",
+    "lintfix": "prettier --write --list-different ."
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/pwa": "^3.3.5",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "cookie-universal-nuxt": "^2.2.2",
+    "core-js": "^3.25.3",
+    "jsonwebtoken": "^9.0.0",
+    "mysql2": "^3.2.0",
+    "nuxt": "^2.15.8",
+    "nuxt-lazy-load": "1.3.0",
+    "nuxt-webfontloader": "^1.1.0",
+    "sequelize": "^6.30.0",
+    "vue": "^2.7.10",
+    "vue-server-renderer": "^2.7.10",
+    "vue-template-compiler": "^2.7.10"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.12.3",
+    "eslint-config-prettier": "^8.5.0",
+    "nuxt-compress": "^5.0.0",
+    "prettier": "^2.7.1",
+    "sequelize-cli": "^6.6.0"
+  }
+}

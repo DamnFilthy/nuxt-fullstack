@@ -1,0 +1,70 @@
+version: '1.0'
+
+services:
+  mysqldb:
+    image: mysql:5.7
+    container_name: mysqldb
+    restart: unless-stopped
+    env_file: ./.env
+    build: ./docker/db
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=test_db
+      - MYSQL_USER=test_user
+      - MYSQL_PASSWORD=testpass
+    volumes:
+      - ./docker/db/dump:/docker-entrypoint-initdb.d/
+      - ./docker/db/data:/var/lib/mysql
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    networks:
+      - internal
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    links:
+      - mysqldb
+    networks:
+      - internal
+    environment:
+      - MYSQL_USER=test_user
+      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root
+      - PMA_HOST=mysqldb
+    restart: always
+    ports:
+      - 8081:80
+  nuxt-fullstack:
+    links:
+      - mysqldb:mysql
+    depends_on:
+      - mysqldb
+    env_file: ./.env
+    build:
+      context: .
+    restart: always
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    networks:
+      - internal
+  nginx:
+    image: nginx:1.19
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - nuxt-fullstack
+    networks:
+      - internal
+networks:
+  internal:
+    driver: bridge
+volumes:
+  dbdata:
+    driver: local

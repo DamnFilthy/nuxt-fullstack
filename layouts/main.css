@@ -1,0 +1,13 @@
+.lazyLoad {
+  background-image: url('../static/vuetify-logo.svg');
+  background-repeat: no-repeat;
+}
+
+.lazyLoad.isLoading {
+  border: 2px solid red;
+}
+
+.lazyLoad.isLoaded {
+  border: 2px solid green;
+}
+
