@@ -36,7 +36,9 @@ services:
     restart: always
     ports:
       - 8081:80
-  nuxt-fullstack:
+  nuxt:
+    container_name: nuxt
+    image: nuxt
     links:
       - mysqldb:mysql
     depends_on:
@@ -59,7 +61,7 @@ services:
     volumes:
       - ./nginx:/etc/nginx/conf.d
     depends_on:
-      - nuxt-fullstack
+      - nuxt
     networks:
       - internal
 networks:

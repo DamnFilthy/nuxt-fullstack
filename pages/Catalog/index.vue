@@ -1,6 +1,7 @@
 <template>
     <div>
         <h1>Catalog</h1>
+        <nuxt-link to="/">Главная</nuxt-link>
         <div class="catalog__wrapper" v-if="catalogData">
             <catalog-card v-for="product in catalogData.products" :key="product.id" :item="product" />
         </div>
