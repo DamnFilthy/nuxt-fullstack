@@ -2,29 +2,49 @@ const Sequelize = require("sequelize")
 // Не менять путь на ~, для корректной работы клиентской части
 import { sequelize } from "../../../../plugins/db.connection"
 
-export const Product = sequelize.define("product", {
+export const Product = sequelize.define("Product", {
     id: {
-        type: Sequelize.INTEGER,
+        allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        allowNull: false,
+        type: Sequelize.INTEGER,
     },
-    createdAt: {
-        type: Sequelize.DATE,
-    },
-    updatedAt: {
-        type: Sequelize.DATE,
-    },
-    name: {
+    title: {
         type: Sequelize.STRING,
-        allowNull: false,
+    },
+    description: {
+        type: Sequelize.STRING,
+    },
+    price: {
+        type: Sequelize.INTEGER,
+    },
+    discountPercentage: {
+        type: Sequelize.INTEGER,
+    },
+    rating: {
+        type: Sequelize.INTEGER,
+    },
+    stock: {
+        type: Sequelize.INTEGER,
     },
     type: {
         type: Sequelize.STRING,
-        allowNull: false,
     },
-    price: {
+    brand: {
         type: Sequelize.STRING,
+    },
+    category: {
+        type: Sequelize.STRING,
+    },
+    thumbnail: {
+        type: Sequelize.STRING,
+    },
+    createdAt: {
         allowNull: false,
+        type: Sequelize.DATE,
+    },
+    updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
     },
 })

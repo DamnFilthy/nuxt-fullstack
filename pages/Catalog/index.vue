@@ -3,7 +3,7 @@
         <h1>Catalog</h1>
         <nuxt-link to="/">Главная</nuxt-link>
         <div class="catalog__wrapper" v-if="catalogData">
-            <catalog-card v-for="product in catalogData.products" :key="product.id" :item="product" />
+            <catalog-card v-for="product in catalogData" :key="product.id" :item="product" />
         </div>
     </div>
 </template>
@@ -15,16 +15,17 @@ export default {
     name: "catalog",
     components: { CatalogCard },
     async asyncData({ $api }) {
-        let catalogData = null
-        await fetch("https://dummyjson.com/products")
-            .then((res) => res.json())
-            .then((res) => (catalogData = res))
-        return {
-            catalogData: catalogData,
-        }
+        // let catalogData = null
+        // await fetch("https://dummyjson.com/products")
+        //     .then((res) => res.json())
+        //     .then((res) => (catalogData = res))
         // return {
-        //     catalogData: await $api("test", "testProducts"),
+        //     catalogData: catalogData,
         // }
+
+      return {
+        catalogData: await $api("catalog", "getAllProducts")
+      }
     },
 }
 </script>

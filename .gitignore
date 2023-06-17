@@ -10,8 +10,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-docker/db/data/*
-docker/db/dump/*
+app-devOps/db/data/*
+app-devOps/db/dump/*
 
 # Runtime data
 pids

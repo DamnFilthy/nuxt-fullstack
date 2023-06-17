@@ -2,7 +2,7 @@ const Sequelize = require("sequelize")
 // Не менять путь на ~, для корректной работы клиентской части
 import { sequelize } from "../../../../plugins/db.connection"
 
-export const User = sequelize.define("user", {
+export const User = sequelize.define("User", {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
